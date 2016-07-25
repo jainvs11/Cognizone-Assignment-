@@ -16,4 +16,8 @@ public interface IMessageController {
 	Collection<Message> getAllMessages();
 
 	Message getMessage(Integer messageId);
+	
+	Message softDelete(Integer messageId);
+	
+	Collection<Message> getEvenDeletedMessages();
 }

@@ -1,7 +1,9 @@
 package zone.cogni.assignment.dao;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,11 +33,30 @@ public class MessageDAO implements IMessageDAO {
 
 	@Override
 	public Collection<Message> getAllMessages() {
-		return messages.values();
+		Collection<Message> allMessages = messages.values();
+		Collection<Message> newMessages = new ArrayList<Message>();
+		for (Message message : allMessages) {
+			if (message.isActive()) {
+				newMessages.add(message);
+			}
+		}
+		return newMessages;
 	}
 
 	@Override
 	public Message getMessage(Integer messageId) {
 		return messages.get(messageId);
+	}
+
+	@Override
+	public Message softDelete(Integer messageId) {
+		Message tempMessage = messages.get(messageId);
+		tempMessage.setActive(false);
+		return tempMessage;
+	}
+
+	@Override
+	public Collection<Message> getEvenDeletedMessages() {
+		return messages.values();
 	}
 }

@@ -10,6 +10,7 @@ public class Message {
 	private String message;
 	private String timestamp;
 	private Integer messageId;
+	private boolean isActive = true;
 
 	public Message() {
 		// TODO Auto-generated constructor stub
@@ -71,8 +72,17 @@ public class Message {
 		return true;
 	}
 
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
 	@Override
 	public String toString() {
-		return "Message [message=" + message + ", timestamp=" + timestamp + ", messageId=" + messageId + "]";
+		return "Message [message=" + message + ", timestamp=" + timestamp + ", messageId=" + messageId + ", isActive="
+				+ isActive + "]";
 	}
 }

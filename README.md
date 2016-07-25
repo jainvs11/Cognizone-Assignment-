@@ -14,3 +14,9 @@ http://localhost:8080/getAllMessages<br/>
 for feching message with messageId<br/>
 http://localhost:8080/getMessage?messageId=1<br/>
 http://localhost:8080/getMessage?messageId=2<br/>
+
+For Soft delete<br/>
+http://localhost:8080/softDelete?messageId=3<br/>
+
+For getEvenDeletedMessages<br/>
+http://localhost:8080/getEvenDeletedMessages<br/>

@@ -49,4 +49,14 @@ public class MessageService implements IMessageService {
 
 	public MessageService() {
 	}
+
+	@Override
+	public Message softDelete(Integer messageId) {
+		return messageDAO.softDelete(messageId);
+	}
+
+	@Override
+	public Collection<Message> getEvenDeletedMessages() {
+		return messageDAO.getEvenDeletedMessages();
+	}
 }

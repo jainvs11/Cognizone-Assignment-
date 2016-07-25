@@ -15,4 +15,8 @@ public interface IMessageService {
 	Collection<Message> getAllMessages();
 
 	Message getMessage(Integer messageId);
+	
+	Message softDelete(Integer messageId);
+	
+	Collection<Message> getEvenDeletedMessages();
 }

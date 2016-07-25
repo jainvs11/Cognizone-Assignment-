@@ -21,22 +21,49 @@ public class MessageController implements IMessageController {
 	@Autowired
 	private IMessageService messageService;
 
+	/**
+	 * Create Message
+	 */
 	@Override
 	@RequestMapping("/createMessage")
 	public Message createMessage(String message) {
 		return messageService.createMessage(message);
 	}
 
+	/**
+	 * Get all messages
+	 */
 	@Override
 	@RequestMapping("/getAllMessages")
 	public Collection<Message> getAllMessages() {
 		return messageService.getAllMessages();
 	}
 
+	/**
+	 * get message
+	 */
 	@Override
 	@RequestMapping("/getMessage")
 	public Message getMessage(Integer messageId) {
 		return messageService.getMessage(messageId);
+	}
+
+	/**
+	 * Soft delete
+	 */
+	@Override
+	@RequestMapping("/softDelete")
+	public Message softDelete(Integer messageId) {
+		return messageService.softDelete(messageId);
+	}
+
+	/**
+	 * get soft deleted messages along with all messages
+	 */
+	@Override
+	@RequestMapping("/getEvenDeletedMessages")
+	public Collection<Message> getEvenDeletedMessages() {
+		return messageService.getEvenDeletedMessages();
 	}
 
 	public IMessageService getMessageService() {
