@@ -2,13 +2,13 @@
 Assignment for cognizone
 
 For creating message <br/>
-localhost:8080/createMessage?message=Message1<br/>
-localhost:8080/createMessage?message=Message2<br/>
-localhost:8080/createMessage?message=Message3<br/>
+<a>http://localhost:8080/createMessage?message=Message1</a><br/>
+<a>http://localhost:8080/createMessage?message=Message2</a><br/>
+<a>http://localhost:8080/createMessage?message=Message3</a><br/>
 
 for feching all messages<br/>
-http://localhost:8080/getAllMessages<br/>
+<a>http://localhost:8080/getAllMessages</a><br/>
 
 for feching message with messageId<br/>
-http://localhost:8080/getMessage?messageId=1<br/>
-http://localhost:8080/getMessage?messageId=2<br/>
+<a>http://localhost:8080/getMessage?messageId=1</a><br/>
+<a>http://localhost:8080/getMessage?messageId=2</a><br/>
