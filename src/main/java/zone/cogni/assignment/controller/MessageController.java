@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import zone.cogni.assignment.dto.Message;
+import zone.cogni.assignment.exception.MessageException;
 import zone.cogni.assignment.service.IMessageService;
 import zone.cogni.assignment.service.MessageService;
 
@@ -38,7 +39,7 @@ public class MessageController implements IMessageController {
 	 * Create Message
 	 */
 	@Override
-	public Message createMessage(String message) {
+	public Message createMessage(String message) throws MessageException {
 		return messageService.createMessage(message);
 	}
 
@@ -46,7 +47,7 @@ public class MessageController implements IMessageController {
 	 * Get all messages
 	 */
 	@Override
-	public Collection<Message> getAllMessages() {
+	public Collection<Message> getAllMessages() throws MessageException {
 		return messageService.getAllMessages();
 	}
 
@@ -54,7 +55,7 @@ public class MessageController implements IMessageController {
 	 * get message
 	 */
 	@Override
-	public Message getMessage(Integer messageId) {
+	public Message getMessage(Integer messageId) throws MessageException {
 		return messageService.getMessage(messageId);
 	}
 
@@ -62,7 +63,7 @@ public class MessageController implements IMessageController {
 	 * Soft delete
 	 */
 	@Override
-	public Message softDelete(Integer messageId) {
+	public Message softDelete(Integer messageId) throws MessageException {
 		return messageService.softDelete(messageId);
 	}
 
@@ -70,7 +71,7 @@ public class MessageController implements IMessageController {
 	 * get soft deleted messages along with all messages
 	 */
 	@Override
-	public Collection<Message> getEvenDeletedMessages() {
+	public Collection<Message> getEvenDeletedMessages() throws MessageException {
 		return messageService.getEvenDeletedMessages();
 	}
 
