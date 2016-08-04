@@ -3,7 +3,6 @@ package zone.cogni.assignment.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import zone.cogni.assignment.dto.Message;
@@ -22,10 +21,23 @@ public class MessageController implements IMessageController {
 	private IMessageService messageService;
 
 	/**
+	 * Default Constructor
+	 */
+	public MessageController() {
+
+	}
+
+	/**
+	 * Parameterized Constructor
+	 */
+	public MessageController(IMessageService messageService) {
+		this.messageService = messageService;
+	}
+
+	/**
 	 * Create Message
 	 */
 	@Override
-	@RequestMapping("/createMessage")
 	public Message createMessage(String message) {
 		return messageService.createMessage(message);
 	}
@@ -34,7 +46,6 @@ public class MessageController implements IMessageController {
 	 * Get all messages
 	 */
 	@Override
-	@RequestMapping("/getAllMessages")
 	public Collection<Message> getAllMessages() {
 		return messageService.getAllMessages();
 	}
@@ -43,7 +54,6 @@ public class MessageController implements IMessageController {
 	 * get message
 	 */
 	@Override
-	@RequestMapping("/getMessage")
 	public Message getMessage(Integer messageId) {
 		return messageService.getMessage(messageId);
 	}
@@ -52,7 +62,6 @@ public class MessageController implements IMessageController {
 	 * Soft delete
 	 */
 	@Override
-	@RequestMapping("/softDelete")
 	public Message softDelete(Integer messageId) {
 		return messageService.softDelete(messageId);
 	}
@@ -61,7 +70,6 @@ public class MessageController implements IMessageController {
 	 * get soft deleted messages along with all messages
 	 */
 	@Override
-	@RequestMapping("/getEvenDeletedMessages")
 	public Collection<Message> getEvenDeletedMessages() {
 		return messageService.getEvenDeletedMessages();
 	}
@@ -71,14 +79,6 @@ public class MessageController implements IMessageController {
 	}
 
 	public void setMessageService(IMessageService messageService) {
-		this.messageService = messageService;
-	}
-
-	public MessageController() {
-
-	}
-
-	public MessageController(IMessageService messageService) {
 		this.messageService = messageService;
 	}
 }

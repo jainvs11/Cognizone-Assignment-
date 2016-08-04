@@ -20,6 +20,20 @@ public class MessageService implements IMessageService {
 	@Autowired
 	IMessageDAO messageDAO;
 
+	/**
+	 * Default Constructor
+	 */
+	public MessageService() {
+
+	}
+
+	/**
+	 * Parameterized Constructor
+	 */
+	public MessageService(IMessageDAO messageDAO) {
+		this.messageDAO = messageDAO;
+	}
+
 	@Override
 	public Message createMessage(String message) {
 		return messageDAO.createMessage(message);
@@ -41,13 +55,6 @@ public class MessageService implements IMessageService {
 
 	public void setMessageDAO(IMessageDAO messageDAO) {
 		this.messageDAO = messageDAO;
-	}
-
-	public MessageService(IMessageDAO messageDAO) {
-		this.messageDAO = messageDAO;
-	}
-
-	public MessageService() {
 	}
 
 	@Override

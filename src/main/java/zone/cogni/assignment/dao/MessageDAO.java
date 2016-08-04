@@ -3,10 +3,9 @@ package zone.cogni.assignment.dao;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,8 +19,15 @@ import zone.cogni.assignment.dto.Message;
 @Repository
 public class MessageDAO implements IMessageDAO {
 
-	private static Map<Integer, Message> messages = new HashMap<Integer, Message>();
-	static Integer currentIndex = 1;
+	private Map<Integer, Message> messages = new ConcurrentHashMap<Integer, Message>();
+	private Integer currentIndex = 1;
+
+	/**
+	 * Default Constructor
+	 */
+	public MessageDAO() {
+
+	}
 
 	@Override
 	public Message createMessage(String message) {
@@ -35,6 +41,7 @@ public class MessageDAO implements IMessageDAO {
 	public Collection<Message> getAllMessages() {
 		Collection<Message> allMessages = messages.values();
 		Collection<Message> newMessages = new ArrayList<Message>();
+
 		for (Message message : allMessages) {
 			if (message.isActive()) {
 				newMessages.add(message);
