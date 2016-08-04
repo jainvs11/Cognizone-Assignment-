@@ -3,6 +3,8 @@ package zone.cogni.assignment.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import zone.cogni.assignment.dto.Message;
@@ -16,7 +18,7 @@ import zone.cogni.assignment.service.MessageService;
  *
  */
 @RestController
-public class MessageController implements IMessageController {
+public class MessageController {
 
 	@Autowired
 	private IMessageService messageService;
@@ -38,7 +40,8 @@ public class MessageController implements IMessageController {
 	/**
 	 * Create Message
 	 */
-	@Override
+
+	@RequestMapping(value = "/createMessage", method = RequestMethod.POST)
 	public Message createMessage(String message) throws MessageException {
 		return messageService.createMessage(message);
 	}
@@ -46,7 +49,8 @@ public class MessageController implements IMessageController {
 	/**
 	 * Get all messages
 	 */
-	@Override
+
+	@RequestMapping(value = "/getAllMessages", method = RequestMethod.GET)
 	public Collection<Message> getAllMessages() throws MessageException {
 		return messageService.getAllMessages();
 	}
@@ -54,7 +58,8 @@ public class MessageController implements IMessageController {
 	/**
 	 * get message
 	 */
-	@Override
+
+	@RequestMapping(value = "/getMessage", method = RequestMethod.GET)
 	public Message getMessage(Integer messageId) throws MessageException {
 		return messageService.getMessage(messageId);
 	}
@@ -62,7 +67,8 @@ public class MessageController implements IMessageController {
 	/**
 	 * Soft delete
 	 */
-	@Override
+
+	@RequestMapping(value = "/softDelete", method = RequestMethod.DELETE)
 	public Message softDelete(Integer messageId) throws MessageException {
 		return messageService.softDelete(messageId);
 	}
@@ -70,7 +76,8 @@ public class MessageController implements IMessageController {
 	/**
 	 * get soft deleted messages along with all messages
 	 */
-	@Override
+
+	@RequestMapping(value = "/getEvenDeletedMessages", method = RequestMethod.GET)
 	public Collection<Message> getEvenDeletedMessages() throws MessageException {
 		return messageService.getEvenDeletedMessages();
 	}
