@@ -58,19 +58,25 @@ public class MessageController {
 	/**
 	 * get message
 	 */
-
 	@RequestMapping(value = "/getMessage", method = RequestMethod.GET)
 	public Message getMessage(Integer messageId) throws MessageException {
-		return messageService.getMessage(messageId);
+		if (messageId != null) {
+			return messageService.getMessage(messageId);
+		} else {
+			throw new MessageException("messageId is null");
+		}
 	}
 
 	/**
 	 * Soft delete
 	 */
-
 	@RequestMapping(value = "/softDelete", method = RequestMethod.DELETE)
 	public Message softDelete(Integer messageId) throws MessageException {
-		return messageService.softDelete(messageId);
+		if (messageId != null) {
+			return messageService.softDelete(messageId);
+		} else {
+			throw new MessageException("messageId is null");
+		}
 	}
 
 	/**

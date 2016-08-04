@@ -52,13 +52,18 @@ public class MessageDAO implements IMessageDAO {
 
 	@Override
 	public Message getMessage(Integer messageId) {
-		return messages.get(messageId);
+		Message tempMessage = messages.get(messageId);
+		if (tempMessage != null && tempMessage.isActive()) {
+			return tempMessage;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public Message softDelete(Integer messageId) {
 		Message tempMessage = messages.get(messageId);
-		if (tempMessage.isActive()) {
+		if (tempMessage != null && tempMessage.isActive()) {
 			tempMessage.setActive(false);
 			return tempMessage;
 		} else {
